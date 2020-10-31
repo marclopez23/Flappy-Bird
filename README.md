@@ -127,7 +127,7 @@ Todo el contenido de CSS
 
 ### Pantalla de inicio
 
-![https://drive.google.com/file/d/1kxcFDWLbUna5kG1DCfYQIiWiKxbjxFxt/view?usp=sharing](https://drive.google.com/file/d/1kxcFDWLbUna5kG1DCfYQIiWiKxbjxFxt/view?usp=sharing)
+![https://drive.google.com/file/d/1kxcFDWLbUna5kG1DCfYQIiWiKxbjxFxt/view?usp=sharing](https://previews.dropbox.com/p/thumb/AA93gRvUPB-UYQrV2ViJe4KtPpyz3DfjfXAFS2uU6U__UPgKfYJyipCXJjI-FHFUrarsgqDGRSejOFR_HWtJnyuXfF7tXFslFtI3Rp4AkG5AcyRHJK7D-wv4spi__30l41Pg7YjTr-wUmHzTankSC_82ub55JI73znQbSx8KlXUy1GV3lSvJbNisRk9x4ctf59rA6VQOvgdXR59bQji_nS7xRToL0eGHLedyLbtNi8OCzUNF9qzSy0OdODJ_6S0SlIKEYuaRvYCNlqx0x-ivzNDCBzvpsGHw-v32f4rX0oCR0_Mt_sAXq7HE__nBrFAM_9pLU2buiDXN3P15xW6V7UoJ7mfxZio0kDYoNjy0PsXPeg/p.png?fv_content=true&size_mode=5)
 
 ### Pantalla de Juego
 
