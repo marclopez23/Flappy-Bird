@@ -123,3 +123,5 @@ Todo el contenido de CSS
 - Animar el fondo
 - Pasar el CSS a SASS
 
+##  [Notion Board](https://www.notion.so/6d7ca358cdf4498c93a793a49264d132?v=85fef76c59dd4a3394cd2f7c6499d90a)
+
