@@ -45,6 +45,7 @@ Todo el contenido del HTML
 - Comprobar si hay una colisión
 - Comprobar si se tiene que acabar el juego
 - Control de la velocidad de les tuberias
+- Control del tiempo de la partida
 
 ### 4. Pipes.js
 
@@ -67,7 +68,7 @@ Todo el contenido de CSS
 
 ## Pantallas del juego
 
-### Pantall de inicio
+### Pantalla de inicio
 
 - Empieza el juego
 - Cuando se clique el botón de empezar el juego se pasará a la pantalla de juego
@@ -121,3 +122,17 @@ Todo el contenido de CSS
 - Selección del personaje
 - Animar el fondo
 - Pasar el CSS a SASS
+
+## Wireframes
+
+### Pantalla de inicio
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/805c63d0-c636-4f86-a856-ee0e2c98e318/Desktop_-_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/805c63d0-c636-4f86-a856-ee0e2c98e318/Desktop_-_1.png)
+
+### Pantalla de Juego
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73c75407-8331-4d49-a7e3-2d4dc10c407e/Desktop_-_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73c75407-8331-4d49-a7e3-2d4dc10c407e/Desktop_-_2.png)
+
+### Pantalla de Game Over
+
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4c3680f2-ad19-41d9-9c6e-11284e6104aa/Desktop_-_3.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4c3680f2-ad19-41d9-9c6e-11284e6104aa/Desktop_-_3.png)
