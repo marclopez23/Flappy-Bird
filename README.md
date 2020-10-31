@@ -127,7 +127,7 @@ Todo el contenido de CSS
 
 ### Pantalla de inicio
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/805c63d0-c636-4f86-a856-ee0e2c98e318/Desktop_-_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/805c63d0-c636-4f86-a856-ee0e2c98e318/Desktop_-_1.png)
+![https://drive.google.com/file/d/1kxcFDWLbUna5kG1DCfYQIiWiKxbjxFxt/view?usp=sharing](https://drive.google.com/file/d/1kxcFDWLbUna5kG1DCfYQIiWiKxbjxFxt/view?usp=sharing)
 
 ### Pantalla de Juego
 
