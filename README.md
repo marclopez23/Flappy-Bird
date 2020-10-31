@@ -123,16 +123,3 @@ Todo el contenido de CSS
 - Animar el fondo
 - Pasar el CSS a SASS
 
-## Wireframes
-
-### Pantalla de inicio
-
-![https://drive.google.com/file/d/1kxcFDWLbUna5kG1DCfYQIiWiKxbjxFxt/view?usp=sharing](https://previews.dropbox.com/p/thumb/AA93gRvUPB-UYQrV2ViJe4KtPpyz3DfjfXAFS2uU6U__UPgKfYJyipCXJjI-FHFUrarsgqDGRSejOFR_HWtJnyuXfF7tXFslFtI3Rp4AkG5AcyRHJK7D-wv4spi__30l41Pg7YjTr-wUmHzTankSC_82ub55JI73znQbSx8KlXUy1GV3lSvJbNisRk9x4ctf59rA6VQOvgdXR59bQji_nS7xRToL0eGHLedyLbtNi8OCzUNF9qzSy0OdODJ_6S0SlIKEYuaRvYCNlqx0x-ivzNDCBzvpsGHw-v32f4rX0oCR0_Mt_sAXq7HE__nBrFAM_9pLU2buiDXN3P15xW6V7UoJ7mfxZio0kDYoNjy0PsXPeg/p.png?fv_content=true&size_mode=5)
-
-### Pantalla de Juego
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73c75407-8331-4d49-a7e3-2d4dc10c407e/Desktop_-_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/73c75407-8331-4d49-a7e3-2d4dc10c407e/Desktop_-_2.png)
-
-### Pantalla de Game Over
-
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4c3680f2-ad19-41d9-9c6e-11284e6104aa/Desktop_-_3.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4c3680f2-ad19-41d9-9c6e-11284e6104aa/Desktop_-_3.png)
