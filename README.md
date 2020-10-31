@@ -23,6 +23,7 @@ El juego termina cuando el jugador se queda sin vidas.
 3. game.js
 4. pipes.js
 5. player.js
+6. style.css
 
 ### 1. Index.html
 
@@ -59,3 +60,64 @@ Todo el contenido del HTML
     - Mover al personaje
     - Comprobar si se ha chocado
     - Restar las vidas
+
+### 6. Style.css
+
+Todo el contenido de CSS
+
+## Pantallas del juego
+
+### Pantall de inicio
+
+- Empieza el juego
+- Cuando se clique el botón de empezar el juego se pasará a la pantalla de juego
+
+### Pantalla de juego
+
+- El juego estará activo siempre y cuando el usuario tenga vidas. (en el caso del MVP siempre són 1)
+- Cuando el usuario se queda sin vidas el juego pasa a la pantalla de Game Over.
+- Si el jugador se choca con una tuberia, el jugador vuelve al principio y se le quita una vida.
+- Se suman puntos cada vez que se pasa una pipe
+
+### Pantalla de Game Over
+
+- Se muestra la puntuación final
+- Se muestra la mejor puntuación
+- Se puede volver a empezar
+- Cuando el usuario hace clic en restart se vuelve a empezar el juego.
+
+## Tareas
+
+- Crear la repo en Github.
+- Crear los archivos y enlazarlos entre ellos.
+- Main.js
+    - Crear las distintas pantallas
+    - Crear la forma de pasar entre pantallas.
+    - Crear la forma de iniciar y parar el juego.
+- Player.js
+    - Crear el player
+    - Crear los métodos del player
+- Pipes.js
+    - Crear las pipes
+    - Crear los distintos métodos de las pipes.
+- Game.js
+    - Pintar el jugador y las tuberias.
+    - Mover el jugador y las tuberias,
+    - Comprobar las colisiones
+    - Limpiar y actualizar el canvas
+    - Comprobar si hay una colisión
+    - Comprobar si se tiene que acabar el juego
+    - Control de la velocidad de les tuberias
+
+## Backlog
+
+- Crear pantalla de puntuaciones
+- Añadir bonus
+    - Vida extra
+    - Ralentizar el movimiento de las pipes
+- Añadir sonidos
+    - Poder mutearlos
+- Dark Mode
+- Selección del personaje
+- Animar el fondo
+- Pasar el CSS a SASS
