@@ -12,7 +12,8 @@ class Player {
         this.playerPositionY = 50;
         this.playerPositionX = 100;
         this.direction = 0;
-        this.vidas = vidas;
+      this.vidas = vidas;
+      this.puntos = 0;
     }
 
     move() {
@@ -32,6 +33,18 @@ class Player {
     playerDirection(direction) {
     this.direction = direction;
     }
+  
+  isInScreen() {
+    if (this.playerPositionY - this.playerSize.height / 2 <= 0) {
+      this.direction = 1;
+    } else if (this.playerPositionY + this.playerSize.height / 2 >= this.canvas.height) {
+      this.direction = -1;
+    }
+  }
+
+  checkCollisonPipes(pipe) {
+    
+  }
     
     loseLive() {
     this.vidas--;

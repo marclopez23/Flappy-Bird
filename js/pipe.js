@@ -15,12 +15,17 @@ class Pipes{
   }
 
   move() {
-    this.x = this.x - this.speed;
+    this.pipePositionX = this.pipePositionX - this.speed;
   }
 
   draw() {
     this.ctx.fillStyle = "red";
-    this.ctx.fillRect(this.x, this.y - this.pipeSize.height, this.pipeSize.widht, this.pipeSize.height);
+    this.randomGap = Math.floor(Math.random() * 100) + 50;
+    this.pipeTopY = 0 - this.pipePositionY;
+    console.log(this.pipeBottomY)
+    this.pipeBottomY = this.pipeTopY + this.pipeSize.height + this.randomGap;
+    this.ctx.fillRect(this.pipePositionX, this.pipeTopY - this.pipeSize.height, this.pipeSize.widht, this.pipeSize.height);
+    this.ctx.fillRect(this.pipePositionX, this.pipeBottomY, this.pipeSize.widht, this.pipeSize.height);
   }
 
   setPipeSpeed(speed) {
