@@ -33,15 +33,15 @@ function domChanges() {
         `);
 
         const canvas = document.querySelector("canvas");
-        canvas.setAttribute("width", 1200);
-        canvas.setAttribute("height", 1200);
+        canvas.setAttribute("width", 512);
+        canvas.setAttribute("height", 512);
 
         const game = new Game(canvas);
         game.gameOverCallback(buildGameOverScreen);
         game.gameLoop();
         
         function playerUp(event) {
-            if(event.code ="Space") game.player.playerDirection(-1);
+            game.player.playerDirection(-1);
         }
         function playerDown() {
             game.player.playerDirection(1);

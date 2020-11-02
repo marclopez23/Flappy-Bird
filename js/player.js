@@ -4,13 +4,9 @@ class Player {
     constructor(canvas, vidas) {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext("2d");
-        this.playerSize = {
-            widht: 50,
-            height: 50
-        }
-        this.speed = 5;
-        this.playerPositionY = 50;
-        this.playerPositionX = 100;
+        this.speed = 3;
+        this.playerPositionY = 100;
+        this.playerPositionX = 50;
         this.direction = 0;
       this.vidas = vidas;
       this.puntos = 0;
@@ -20,14 +16,10 @@ class Player {
         this.playerPositionY = this.playerPositionY + this.direction * this.speed;
     }
 
-    draw() {
-        this.ctx.fillStyle = "green";
-      this.ctx.fillRect(
-      this.playerPositionX - this.playerSize.widht / 2,
-      this.playerPositionY - this.playerSize.height / 2,
-      this.size,
-      this.size
-    );
+  draw() {
+    this.bird = new Image();
+    this.bird.src ="./assets/img/bird.png"
+    this.ctx.drawImage(this.bird, this.playerPositionX, this.playerPositionY)
     }
 
     playerDirection(direction) {
@@ -35,11 +27,11 @@ class Player {
     }
   
   isInScreen() {
-    if (this.playerPositionY - this.playerSize.height / 2 <= 0) {
+    /*if (this.playerPositionY - this.bird.height / 2 <= 0) {
       this.direction = 1;
-    } else if (this.playerPositionY + this.playerSize.height / 2 >= this.canvas.height) {
+    } else if (this.playerPositionY + this.bird.height / 2 >= this.canvas.height) {
       this.direction = -1;
-    }
+    }*/
   }
 
   checkCollisonPipes(pipe) {

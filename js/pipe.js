@@ -10,7 +10,7 @@ class Pipes{
     this.ctx = this.canvas.getContext("2d");
     this.pipePositionX = this.canvas.width;
     this.pipePositionY = y;
-    this.speed = 5;
+    this.speed = 1.5;
     this.direction = -1;
   }
 
@@ -19,13 +19,18 @@ class Pipes{
   }
 
   draw() {
-    this.ctx.fillStyle = "red";
-    this.randomGap = Math.floor(Math.random() * 100) + 50;
-    this.pipeTopY = 0 - this.pipePositionY;
-    console.log(this.pipeBottomY)
+    this.pipeTop = new Image();
+    this.pipeTop.src ="./assets/img/pipeTop.png"
+    this.pipeBottom = new Image();
+    this.pipeBottom.src ="./assets/img/pipeBottom.png"
+    this.suelo = new Image();
+    this.suelo.src ="./assets/img/suelo.png"
+    this.gapPipe = 90;
+    this.pipeYBottom = this.pipePositionY + this.pipeTop.height + this.gapPipe;
     this.pipeBottomY = this.pipeTopY + this.pipeSize.height + this.randomGap;
-    this.ctx.fillRect(this.pipePositionX, this.pipeTopY - this.pipeSize.height, this.pipeSize.widht, this.pipeSize.height);
-    this.ctx.fillRect(this.pipePositionX, this.pipeBottomY, this.pipeSize.widht, this.pipeSize.height);
+    this.ctx.drawImage(this.pipeTop, this.pipePositionX, this.pipePositionY);
+    this.ctx.drawImage(this.pipeBottom, this.pipePositionX, this.pipeYBottom);
+    this.ctx.drawImage(this.suelo, 0, this.canvas.height - this.suelo.height);
   }
 
   setPipeSpeed(speed) {

@@ -10,13 +10,19 @@ class Game {
     }
 
     gameLoop() {
+        
         this.player = new Player(this.canvas, 1)
-
+        
         const loop = () => {
-            if (Math.random() > 0.97) { //Mirar si puc fer-ho d'una altre forma, testejar cada quan surt
-                const y = Math.random() * this.canvas.height;
+            
+            this.newPipe = this.pipes.length === 0 || this.pipes[(this.pipes.length - 1)].pipePositionX < this.canvas.width / 2; 
+            if (this.newPipe) { 
+                const y = Math.floor((Math.random() * this.canvas.height / 2) - this.canvas.height / 2 + 20);
                 this.pipes.push(new Pipes(this.canvas, y));
             }
+            this.suelo = new Image();
+            this.suelo.src ="./assets/img/suelo.png"
+             this.ctx.drawImage(this.suelo, 0, this.canvas.height - this.suelo.height);
             this.checkAllCollisions();
             this.updateCanvas();
             this.clearCanvas();
