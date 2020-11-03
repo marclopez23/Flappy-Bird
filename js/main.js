@@ -56,7 +56,7 @@ function domChanges() {
             <article class="gameOver-screen">
                 <section>
                     <h1>Game Over</h1>
-                    <p class="last-score">Score: </p>
+                    <p class="last-score">Score:${this.player.puntos} </p>
                     <p class=max-score">Max. Score: </p>
                     <button>Play Again</button>
                 </section>

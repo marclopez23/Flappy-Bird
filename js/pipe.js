@@ -3,8 +3,8 @@
 class Pipes{
     constructor(canvas, y) {
     this.pipeSize = {
-            widht: 50,
-            height: 200
+            widht: 52,
+            height: 242
         }
     this.canvas = canvas;
     this.ctx = this.canvas.getContext("2d");
@@ -12,6 +12,8 @@ class Pipes{
     this.pipePositionY = y;
     this.speed = 1.5;
     this.direction = -1;
+    this.entrePipes = false;
+    this.gapPipe = 90;
   }
 
   move() {
@@ -25,7 +27,6 @@ class Pipes{
     this.pipeBottom.src ="./assets/img/pipeBottom.png"
     this.suelo = new Image();
     this.suelo.src ="./assets/img/suelo.png"
-    this.gapPipe = 90;
     this.pipeYBottom = this.pipePositionY + this.pipeTop.height + this.gapPipe;
     this.pipeBottomY = this.pipeTopY + this.pipeSize.height + this.randomGap;
     this.ctx.drawImage(this.pipeTop, this.pipePositionX, this.pipePositionY);

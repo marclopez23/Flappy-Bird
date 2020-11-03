@@ -10,6 +10,11 @@ class Player {
         this.direction = 0;
       this.vidas = vidas;
       this.puntos = 0;
+      this.birdSize = {
+        width: 38,
+        height: 26
+      }
+      
     }
 
     move() {
@@ -20,6 +25,7 @@ class Player {
     this.bird = new Image();
     this.bird.src ="./assets/img/bird.png"
     this.ctx.drawImage(this.bird, this.playerPositionX, this.playerPositionY)
+    
     }
 
     playerDirection(direction) {
@@ -35,10 +41,20 @@ class Player {
   }
 
   checkCollisonPipes(pipe) {
-    
+    this.passX = ((this.playerPositionX + this.birdSize.width) > pipe.pipePositionX) && (this.playerPositionX < (pipe.pipePositionX + pipe.pipeTop.width));
+    this.passY = ((this.playerPositionY + this.birdSize.height < pipe.pipeSize.height + pipe.gapPipe + pipe.pipePositionY) && (this.playerPositionY > pipe.pipeSize.height + pipe.pipePositionY))
+    this.passPipes = this.passX && this.passY;
+    this.collision = !this.passY && this.passX;
+    if (this.passPipes && !pipe.entrePipes) {
+      this.puntos += 1;
+      pipe.entrePipes = true
+      console.log(this.puntos)
+      return false
+    } else if (this.collision) return true
+    return false;
   }
     
-    loseLive() {
+  loseLive() {
     this.vidas--;
   }
 

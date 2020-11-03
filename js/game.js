@@ -57,6 +57,7 @@ class Game {
     checkAllCollisions() {
         this.player.isInScreen();
         this.pipes.forEach((pipe, index) => {
+            console.log(this.player.checkCollisonPipes(pipe))
             if (this.player.checkCollisonPipes(pipe)) {
                 this.player.loseLive();
                 if (this.player.vidas === 0) {
