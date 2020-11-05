@@ -41,14 +41,13 @@ class Player {
   }
 
   checkCollisonPipes(pipe) {
-    this.passX = ((this.playerPositionX + this.birdSize.width) > pipe.pipePositionX) && (this.playerPositionX < (pipe.pipePositionX + pipe.pipeTop.width));
+    this.passX = ((this.playerPositionX + this.birdSize.width) > pipe.pipePositionX) && (this.playerPositionX < (pipe.pipePositionX + pipe.pipeSize.width));
     this.passY = ((this.playerPositionY + this.birdSize.height < pipe.pipeSize.height + pipe.gapPipe + pipe.pipePositionY) && (this.playerPositionY > pipe.pipeSize.height + pipe.pipePositionY))
     this.passPipes = this.passX && this.passY;
     this.collision = !this.passY && this.passX;
     if (this.passPipes && !pipe.entrePipes) {
-      this.puntos += 1;
+      this.sumPoints();
       pipe.entrePipes = true
-      console.log(this.puntos)
       return false
     } else if (this.collision) return true
     return false;
@@ -56,6 +55,10 @@ class Player {
     
   loseLive() {
     this.vidas--;
+  }
+
+  sumPoints() {
+    this.puntos += 1;
   }
 
 

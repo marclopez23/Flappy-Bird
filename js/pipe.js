@@ -1,23 +1,24 @@
 "use strict"
 
 class Pipes{
-    constructor(canvas, y) {
-    this.pipeSize = {
-            widht: 52,
+    constructor(canvas, y, seconds) {
+      this.pipeSize = {
+            width: 52,
             height: 242
         }
-    this.canvas = canvas;
-    this.ctx = this.canvas.getContext("2d");
-    this.pipePositionX = this.canvas.width;
-    this.pipePositionY = y;
-    this.speed = 1.5;
-    this.direction = -1;
-    this.entrePipes = false;
-    this.gapPipe = 90;
+      this.canvas = canvas;
+      this.ctx = this.canvas.getContext("2d");
+      this.pipePositionX = this.canvas.width;
+      this.pipePositionY = y;
+      this.direction = -1;
+      this.entrePipes = false;
+      this.gapPipe = 90;
+      this.seconds = seconds;
   }
 
-  move() {
-    this.pipePositionX = this.pipePositionX - this.speed;
+  move(speed) {
+    this.pipePositionX = this.pipePositionX - speed;
+    console.log(speed)
   }
 
   draw() {
@@ -34,7 +35,5 @@ class Pipes{
     this.ctx.drawImage(this.suelo, 0, this.canvas.height - this.suelo.height);
   }
 
-  setPipeSpeed(speed) {
-    this.speed = speed;
-  }
+  
 }

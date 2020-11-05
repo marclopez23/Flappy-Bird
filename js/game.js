@@ -7,27 +7,55 @@ class Game {
         this.player;
         this.pipes = [];
         this.isGameOver = false;
+        this.pointsTag = document.querySelector('#points');
+        this.timeTag = document.querySelector('#time')
+        this.count = 0;
+        this.seconds = 0;
+        this.minute = 0;
+        this.increment = false;
+        this.time = 0;
+        this.speed = 1.5
+    }
+
+    timer() {
+        this.secondsString = this.seconds.toString();
+        this.minuteString = this.minute.toString();
+        if (this.secondsString.length < 2) this.secondsString = "0" + this.secondsString;
+        if (this.minuteString.length < 2) this.minuteString = "0" + this.minuteString;
+        return `${this.minuteString} : ${this.secondsString}`
     }
 
     gameLoop() {
         
         this.player = new Player(this.canvas, 1)
-        
+        this.time = setInterval(() => {
+            this.count++;
+            this.seconds = this.count;
+            if (this.count % 60 === 0) {
+                this.minute++;
+                this.count = 0;
+            }
+            
+        }, 1000);
         const loop = () => {
             
             this.newPipe = this.pipes.length === 0 || this.pipes[(this.pipes.length - 1)].pipePositionX < this.canvas.width / 2; 
             if (this.newPipe) { 
                 const y = Math.floor((Math.random() * this.canvas.height / 2) - this.canvas.height / 2 + 20);
-                this.pipes.push(new Pipes(this.canvas, y));
+                this.pipes.push(new Pipes(this.canvas, y, this.seconds));
             }
+            if (this.pipeCount %3 === 0) {
+                //pipe.speed = pipe.speed + 0.25;
+            } 
             this.suelo = new Image();
             this.suelo.src ="./assets/img/suelo.png"
-             this.ctx.drawImage(this.suelo, 0, this.canvas.height - this.suelo.height);
+            this.ctx.drawImage(this.suelo, 0, this.canvas.height - this.suelo.height);
             this.checkAllCollisions();
             this.updateCanvas();
             this.clearCanvas();
             this.drawCanvas();
-
+            this.timeTag.innerText = this.timer()
+            this.pointsTag.innerText = this.player.puntos
             if (!this.isGameOver) {
                 window.requestAnimationFrame(loop);
             }
@@ -39,7 +67,13 @@ class Game {
     updateCanvas() {
         this.player.move();
         this.pipes.forEach((pipe) => {
-            pipe.move();
+            if (this.seconds % 3 === 0 && !this.increment) {
+                this.increment = true;
+                this.speed = this.speed + 0.5
+            } else if(this.seconds % 3 != 0 && this.increment) {
+                this.increment = false;
+            }
+            pipe.move(this.speed);
         });
     }
 
@@ -54,11 +88,14 @@ class Game {
         });
     }
 
+    touchFloor() {
+        return (this.player.playerPositionY + this.player.birdSize.height >= this.canvas.height - this.suelo.height) ? true : false;
+    }
+
     checkAllCollisions() {
         this.player.isInScreen();
         this.pipes.forEach((pipe, index) => {
-            console.log(this.player.checkCollisonPipes(pipe))
-            if (this.player.checkCollisonPipes(pipe)) {
+            if (this.player.checkCollisonPipes(pipe) || this.touchFloor()) {
                 this.player.loseLive();
                 if (this.player.vidas === 0) {
                     this.isGameOver = true;
@@ -69,6 +106,7 @@ class Game {
     }
 
     gameOverCallback(callback) {
+        clearInterval(this.time)
     this.onGameOver = callback;
   }
 

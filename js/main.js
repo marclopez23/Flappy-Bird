@@ -7,6 +7,8 @@ function domChanges() {
         main.innerHTML = content;
     }
 
+    //let time;
+
     function buildStartGameScreen() {
 
         buildDom(`
@@ -29,6 +31,10 @@ function domChanges() {
             <article class="game-screen">
                 <canvas></canvas>
             </article>
+            <article class="info">
+                <p>Current Points: <span id="points"></span></p>
+                <p>Current Time: <span id="time"></span>
+            </article>
             
         `);
 
@@ -37,6 +43,7 @@ function domChanges() {
         canvas.setAttribute("height", 512);
 
         const game = new Game(canvas);
+        
         game.gameOverCallback(buildGameOverScreen);
         game.gameLoop();
         
@@ -72,3 +79,4 @@ function domChanges() {
 };
 
 window.addEventListener("load", domChanges);
+
