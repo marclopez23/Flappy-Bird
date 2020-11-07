@@ -77,5 +77,5 @@ class Player {
     this.puntos += 1;
   }
 
-
+ 
 }

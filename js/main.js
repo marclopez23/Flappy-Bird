@@ -140,7 +140,13 @@ function domChanges() {
                     <p class=max-score">Max. Score: </p>
                     <button>Play Again</button>
                 </section>
-            </article>
+                </article>
+                <article>
+                <section id="scores">
+                    <h2>Best Scores Ever</h2>
+                    <ul>${scoreElements}</ul>
+                </section>
+                </article>
         `);
             
         const playAgainButton = document.querySelector("button");
