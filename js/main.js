@@ -148,6 +148,7 @@ function domChanges() {
         const bestTen = () => {
             let bestScores = [];
             for (let i = 0; i < 10; i++){
+                if(orderedScores[i] != undefined)
                 bestScores.push(orderedScores[i])
             }
             return bestScores;
@@ -171,12 +172,17 @@ function domChanges() {
                 <section id="scores">
                     <h2>Best Scores Ever</h2>
                     <ul>${scoreElements}</ul>
+                    <button id="reset">Reset Scores</button>
                 </section>
                 </article>
         `);
             
         const playAgainButton = document.querySelector("button");
+        const reset = document.querySelector("#reset")
         playAgainButton.addEventListener("click", playerSelectorScreen);
+        reset.addEventListener('click', () => {
+            localStorage.clear();
+        })
         }
     
     buildStartGameScreen();
