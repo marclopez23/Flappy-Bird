@@ -1,6 +1,6 @@
 "use strict"
 
-class Pipes{ 
+class Pipes{
     constructor(canvas, y, seconds) {
       this.pipeSize = {
             width: 52,
@@ -14,6 +14,16 @@ class Pipes{
       this.entrePipes = false;
       this.gapPipe = 90;
       this.seconds = seconds;
+      this.pipesImages = {
+        noche: {
+          bottom: "./assets/img/pipes/pipered-botom.png",
+          top: "./assets/img/pipes/pipered-top.png"
+        },
+        dia: {
+          bottom: "./assets/img/pipes/pipegreen-botom.png",
+          top: "./assets/img/pipes/pipegreen-top.png"
+        }
+      }
   }
 
   move(speed) {
@@ -21,13 +31,13 @@ class Pipes{
     console.log(speed)
   }
 
-  draw() {
+  draw(sueloImg, hora) {
     this.pipeTop = new Image();
-    this.pipeTop.src ="./assets/img/pipeTop.png"
+    this.pipeTop.src = this.pipesImages[hora].top
     this.pipeBottom = new Image();
-    this.pipeBottom.src ="./assets/img/pipeBottom.png"
+    this.pipeBottom.src =this.pipesImages[hora].bottom
     this.suelo = new Image();
-    this.suelo.src ="./assets/img/suelo.png"
+    this.suelo.src = sueloImg[hora]
     this.pipeYBottom = this.pipePositionY + this.pipeTop.height + this.gapPipe;
     this.pipeBottomY = this.pipeTopY + this.pipeSize.height + this.randomGap;
     this.ctx.drawImage(this.pipeTop, this.pipePositionX, this.pipePositionY);

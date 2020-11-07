@@ -1,7 +1,7 @@
 "use strict"
 
-class Game { 
-    constructor(canvas) {
+class Game {
+    constructor(canvas, color, hora) {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext("2d");
         this.player;
@@ -16,6 +16,16 @@ class Game {
         this.time = 0;
         this.speed = 1.5;
         this.down = true;
+        this.color = color
+        this.backgroundImages = {
+            dia: "./assets/img/fondo/fondo.png",
+            noche: "./assets/img/fondo/fondo-noche.png"
+        }
+        this.sueloImages = {
+            dia: "./assets/img/suelo/suelo.png",
+            noche: "./assets/img/suelo/suelo-noche.png"
+        }
+        this.hora = hora
     }
 
     timer() {
@@ -27,8 +37,7 @@ class Game {
     }
 
     gameLoop() {
-        
-        this.player = new Player(this.canvas, 1)
+        this.player = new Player(this.canvas, 1, this.color)
         this.time = setInterval(() => {
             this.count++;
             this.seconds = this.count;
@@ -46,7 +55,7 @@ class Game {
                 this.pipes.push(new Pipes(this.canvas, y, this.seconds));
             }
             this.suelo = new Image();
-            this.suelo.src = "./assets/img/suelo.png"
+            this.suelo.src = this.sueloImages[this.hora]
             this.ctx.drawImage(this.suelo, 0, this.canvas.height - this.suelo.height);
             this.checkAllCollisions();
             this.updateCanvas();
@@ -78,14 +87,14 @@ class Game {
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.fondo = new Image();
-            this.fondo.src = "./assets/img/fondo.png"
+            this.fondo.src = this.backgroundImages[this.hora]
             this.ctx.drawImage(this.fondo, 0, 0)
     }
 
     drawCanvas() {
         this.player.draw(this.down);
         this.pipes.forEach((pipe) => {
-            pipe.draw();
+            pipe.draw(this.sueloImages, this.hora);
         });
     }
 
@@ -104,7 +113,7 @@ class Game {
                 this.player.loseLive();
                 if (this.player.vidas === 0) {
                     this.isGameOver = true;
-                    this.onGameOver();
+                    this.onGameOver(this.player.puntos);
                 }
             }
         });
