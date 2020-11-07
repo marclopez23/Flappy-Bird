@@ -1,19 +1,34 @@
 "use strict"
 
 class Player {
-    constructor(canvas, vidas) {
+    constructor(canvas, vidas, color) {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext("2d");
         this.speed = 3;
         this.playerPositionY = 100;
         this.playerPositionX = 50;
-        this.direction = 0;
+      this.direction = 0;
+      this.playerImages = {
+        yellow: {
+          down: "./assets/img/birds/yellow-down.png",
+          up: "./assets/img/birds/yellow-up.png"
+        },
+        blue: {
+          down: "./assets/img/birds/blue-down.png",
+          up: "./assets/img/birds/blue-up.png"
+        },
+        red: {
+          down: "./assets/img/birds/red-down.png",
+          up: "./assets/img/birds/red-up.png"
+        }
+      }
       this.vidas = vidas;
       this.puntos = 0;
       this.birdSize = {
         width: 34,
         height: 24
       }
+      this.color = color
       
     }
 
@@ -23,8 +38,8 @@ class Player {
 
   draw(cae) {
     this.bird = new Image();
-    if (cae) this.bird.src = "./assets/img/yellow-down.png"
-    else this.bird.src ="./assets/img/yellow-up.png"
+    if (cae) this.bird.src = this.playerImages[this.color].down
+    else this.bird.src = this.playerImages[this.color].up
     this.ctx.drawImage(this.bird, this.playerPositionX, this.playerPositionY)
     
     }
