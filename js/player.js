@@ -11,8 +11,8 @@ class Player {
       this.vidas = vidas;
       this.puntos = 0;
       this.birdSize = {
-        width: 38,
-        height: 26
+        width: 34,
+        height: 24
       }
       
     }
@@ -21,9 +21,10 @@ class Player {
         this.playerPositionY = this.playerPositionY + this.direction * this.speed;
     }
 
-  draw() {
+  draw(cae) {
     this.bird = new Image();
-    this.bird.src ="./assets/img/bird.png"
+    if (cae) this.bird.src = "./assets/img/yellow-down.png"
+    else this.bird.src ="./assets/img/yellow-up.png"
     this.ctx.drawImage(this.bird, this.playerPositionX, this.playerPositionY)
     
     }

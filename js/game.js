@@ -14,7 +14,8 @@ class Game {
         this.minute = 0;
         this.increment = false;
         this.time = 0;
-        this.speed = 1.5
+        this.speed = 1.5;
+        this.down = true;
     }
 
     timer() {
@@ -41,14 +42,11 @@ class Game {
             
             this.newPipe = this.pipes.length === 0 || this.pipes[(this.pipes.length - 1)].pipePositionX < this.canvas.width / 2; 
             if (this.newPipe) { 
-                const y = Math.floor((Math.random() * this.canvas.height / 2) - this.canvas.height / 2 + 20);
+                const y = Math.floor((Math.random() * 242 + 10) - this.canvas.height / 2 );
                 this.pipes.push(new Pipes(this.canvas, y, this.seconds));
             }
-            if (this.pipeCount %3 === 0) {
-                //pipe.speed = pipe.speed + 0.25;
-            } 
             this.suelo = new Image();
-            this.suelo.src ="./assets/img/suelo.png"
+            this.suelo.src = "./assets/img/suelo.png"
             this.ctx.drawImage(this.suelo, 0, this.canvas.height - this.suelo.height);
             this.checkAllCollisions();
             this.updateCanvas();
@@ -67,10 +65,10 @@ class Game {
     updateCanvas() {
         this.player.move();
         this.pipes.forEach((pipe) => {
-            if (this.seconds % 3 === 0 && !this.increment) {
+            if (this.seconds % 5 === 0 && !this.increment) {
                 this.increment = true;
                 this.speed = this.speed + 0.5
-            } else if(this.seconds % 3 != 0 && this.increment) {
+            } else if(this.seconds % 5 != 0 && this.increment) {
                 this.increment = false;
             }
             pipe.move(this.speed);
@@ -79,10 +77,13 @@ class Game {
 
     clearCanvas() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.fondo = new Image();
+            this.fondo.src = "./assets/img/fondo.png"
+            this.ctx.drawImage(this.fondo, 0, 0)
     }
 
     drawCanvas() {
-        this.player.draw();
+        this.player.draw(this.down);
         this.pipes.forEach((pipe) => {
             pipe.draw();
         });
@@ -92,10 +93,14 @@ class Game {
         return (this.player.playerPositionY + this.player.birdSize.height >= this.canvas.height - this.suelo.height) ? true : false;
     }
 
+    touchCeil() {
+        return (this.player.playerPositionY <= 0) ? true : false;
+    }
+
     checkAllCollisions() {
         this.player.isInScreen();
         this.pipes.forEach((pipe, index) => {
-            if (this.player.checkCollisonPipes(pipe) || this.touchFloor()) {
+            if (this.player.checkCollisonPipes(pipe) || this.touchFloor() || this.touchCeil()) {
                 this.player.loseLive();
                 if (this.player.vidas === 0) {
                     this.isGameOver = true;

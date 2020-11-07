@@ -35,6 +35,9 @@ function domChanges() {
                 <p>Current Points: <span id="points"></span></p>
                 <p>Current Time: <span id="time"></span>
             </article>
+            <article class="hint">
+                <p id="hint-text"></p>
+            </article>
             
         `);
 
@@ -48,11 +51,20 @@ function domChanges() {
         game.gameLoop();
         
         function playerUp(event) {
+            let hint = document.querySelector('#hint-text')
+            if(event.keyCode == 32){
             game.player.playerDirection(-1);
+                game.down = false
+                hint.innerText = ""
+            }
+            else hint.innerText ="Use the spacebar to move the bird"
+            
         }
         function playerDown() {
             game.player.playerDirection(1);
+            game.down = true;
         }
+        playerDown();
         document.addEventListener("keyup", playerDown)
         document.addEventListener("keydown", playerUp);
 
@@ -71,7 +83,7 @@ function domChanges() {
         `);
             
         const playAgainButton = document.querySelector("button");
-        playAgainButton.addEventListener("click", buildStartGameScreen);
+        playAgainButton.addEventListener("click", buildGameScreen);
         }
     
     buildStartGameScreen();
