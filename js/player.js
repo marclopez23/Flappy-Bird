@@ -32,14 +32,6 @@ class Player {
     playerDirection(direction) {
     this.direction = direction;
     }
-  
-  isInScreen() {
-    /*if (this.playerPositionY - this.bird.height / 2 <= 0) {
-      this.direction = 1;
-    } else if (this.playerPositionY + this.bird.height / 2 >= this.canvas.height) {
-      this.direction = -1;
-    }*/
-  }
 
   checkCollisonPipes(pipe) {
     this.passX = ((this.playerPositionX + this.birdSize.width) > pipe.pipePositionX) && (this.playerPositionX < (pipe.pipePositionX + pipe.pipeSize.width));
