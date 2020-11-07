@@ -39,7 +39,7 @@ function domChanges() {
             </div>
             <div>
                 <button id="dia">Day</button>
-                <button id="noche">Nigth</button>
+                <button id="noche">Night</button>
             </div>
             <button id="start">Start Game</button>
         </article>
@@ -79,7 +79,6 @@ function domChanges() {
         
         const start = () => {
             let allSelected = colorOk && hourOk;
-            console.log(allSelected, hourOk, colorOk)
             if (allSelected) startButton.addEventListener('click', () => buildGameScreen(color, hora))
         }
 
@@ -129,15 +128,42 @@ function domChanges() {
 
     }
 
+    const setScore = (newScore) => {
+    const topScoresStr = localStorage.getItem('topScores');
+    let topScoresArr = [];
+    if(topScoresStr) topScoresArr = JSON.parse(topScoresStr);
+    topScoresArr.push(newScore);
+    const updatedScoresStr = JSON.stringify(topScoresArr);
+    localStorage.setItem('topScores', updatedScoresStr);
+    return topScoresArr;
+  }
+
 
 
     function buildGameOverScreen(puntos) {
+        const scores = setScore(puntos);
+        let orderedScores = scores.sort((a, b) => {
+        return b - a;
+        })
+        const bestTen = () => {
+            let bestScores = [];
+            for (let i = 0; i < 10; i++){
+                bestScores.push(orderedScores[i])
+            }
+            return bestScores;
+        }
+
+        let scoreElements = bestTen().reduce((acc, score) => {
+        return `${acc} <li>${score}</li>`;
+        }, '')
+
+       
         buildDom(`
             <article class="gameOver-screen">
                 <section>
                     <h1>Game Over</h1>
                     <p class="last-score">Score:${puntos} </p>
-                    <p class=max-score">Max. Score: </p>
+                    <p class=max-score">Max. Score:${orderedScores[0]} </p>
                     <button>Play Again</button>
                 </section>
                 </article>
