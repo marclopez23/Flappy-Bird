@@ -122,6 +122,6 @@ class Game {
     gameOverCallback(callback) {
         clearInterval(this.time)
     this.onGameOver = callback;
-  }
+  } 
 
 }

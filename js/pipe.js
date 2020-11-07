@@ -45,5 +45,5 @@ class Pipes{
     this.ctx.drawImage(this.suelo, 0, this.canvas.height - this.suelo.height);
   }
 
-  
+   
 }
