@@ -1,6 +1,6 @@
 "use strict"
 
-class Pipes{
+class Pipes{ 
     constructor(canvas, y, seconds) {
       this.pipeSize = {
             width: 52,

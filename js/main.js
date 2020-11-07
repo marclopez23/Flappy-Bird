@@ -1,6 +1,6 @@
 "use strict"
 
-function domChanges() {
+function domChanges() { 
     
     function buildDom(content) {
         const main = document.querySelector("main");

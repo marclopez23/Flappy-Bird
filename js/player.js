@@ -1,6 +1,6 @@
 "use strict"
 
-class Player {
+class Player { 
     constructor(canvas, vidas) {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext("2d");
