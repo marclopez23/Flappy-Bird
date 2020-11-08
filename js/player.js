@@ -53,11 +53,17 @@ class Player {
     this.passY = ((this.playerPositionY + this.birdSize.height < pipe.pipeSize.height + pipe.gapPipe + pipe.pipePositionY) && (this.playerPositionY > pipe.pipeSize.height + pipe.pipePositionY))
     this.passPipes = this.passX && this.passY;
     this.collision = !this.passY && this.passX;
-   if (this.passPipes && !pipe.entrePipes) {
+    if (this.passPipes && !pipe.entrePipes) {
+     this.pointSound = new Audio("../assets/sounds/sfx_point.mp3")
+     this.pointSound.play();
       this.sumPoints();
       pipe.entrePipes = true
       return false
-    } else if (this.collision) return true
+   } else if (this.collision) {
+     this.hitSound = new Audio("../assets/sounds/sfx_hit.mp3")
+     this.hitSound.play();
+     return true
+    } 
     return false;
   }
     

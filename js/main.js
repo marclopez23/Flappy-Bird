@@ -128,10 +128,13 @@ function domChanges() {
         
         function playerUp(event) {
             let hint = document.querySelector('.hint')
-            if(event.keyCode == 32){
+            if (event.keyCode == 32) {
+            const wingSound = new Audio("../assets/sounds/sfx_wing.mp3")
+            wingSound.play();
             game.player.playerDirection(-1);
-                game.down = false
-                hint.style.visibility = "hidden"
+            game.down = false
+            hint.style.visibility = "hidden"
+                wingSound.stop(); 
             }
             else hint.style.visibility = "visible"
             

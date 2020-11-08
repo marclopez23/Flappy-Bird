@@ -107,7 +107,6 @@ class Game {
     }
 
     checkAllCollisions() {
-        
         this.pipes.forEach((pipe, index) => {
             if (this.player.checkCollisonPipes(pipe) || this.touchFloor() || this.touchCeil()) {
                 this.player.loseLive();
