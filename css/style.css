@@ -1,45 +1,197 @@
 /*    RESET STYLES   */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+div,
+body,
+main {
+  display: block;
+  box-sizing: border-box;
 }
+
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
+
 table {
-	border-collapse: collapse;
-    border-spacing: 0;
-    
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*   FONT   */
+@font-face {
+  font-family: "Flappy Bird";
+  src: url("../assets/fonts/Flappy-Bird.woff2") format("woff2"), url("../assets/fonts/Flappy-Bird.woff") format("woff"), url("../assets/fonts/Flappy-Bird.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /*   STYLES  */
+body {
+  font-family: "Flappy Bird", sans-serif;
+}
+
+body main {
+  background-color: skyblue;
+  color: #ffffff;
+  padding: 2em;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+body main section.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+body main section.content .logo {
+  width: 50%;
+  margin-bottom: 2em;
+}
+
+body main section.content button {
+  background-image: url(../assets/img/button.png);
+  color: #1aa64d;
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 1em;
+  height: 79px;
+  background-size: cover;
+  background-color: transparent;
+  border-radius: 15px;
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+
+body main section.content button:active {
+  border: none;
+  outline: none;
+}
+
+body main section.content button:hover {
+  box-shadow: 0px 12px 26px 2px #94949461;
+  transform: scale(1.1);
+}

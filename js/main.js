@@ -12,11 +12,8 @@ function domChanges() {
         buildDom(`
         <article class="start-screen">
             <section class="content">
-                <h1>Flappy Bird</h1>
-                <button id="settings">Game settings</button>
-            </section>
-            <section class="howTo>
-                <p>Use the space bar to move the bird</p>
+                <img class="logo" src="./assets/img/logo.png">
+                <button id="settings" class="importantBtn">Game settings</button>
             </section>
         </article>
         `);
@@ -41,7 +38,10 @@ function domChanges() {
                 <button id="dia">Day</button>
                 <button id="noche">Night</button>
             </div>
-            <button id="start">Start Game</button>
+            <button id="start" class="importantBtn">Start Game</button>
+            <section class="howTo">
+                <p>Use the space bar to move the bird</p>
+            </section>
         </article>
         `);
         const yellow = document.querySelector("#yellow");
@@ -165,7 +165,7 @@ function domChanges() {
                     <h1>Game Over</h1>
                     <p class="last-score">Score:${puntos} </p>
                     <p class=max-score">Max. Score:${orderedScores[0]} </p>
-                    <button>Play Again</button>
+                    <button class="importantBtn">Play Again</button>
                 </section>
                 </article>
                 <article>
