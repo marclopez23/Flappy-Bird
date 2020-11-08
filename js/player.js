@@ -47,21 +47,13 @@ class Player {
     playerDirection(direction) {
     this.direction = direction;
     }
-  
-  isInScreen() {
-    /*if (this.playerPositionY - this.bird.height / 2 <= 0) {
-      this.direction = 1;
-    } else if (this.playerPositionY + this.bird.height / 2 >= this.canvas.height) {
-      this.direction = -1;
-    }*/
-  }
 
   checkCollisonPipes(pipe) {
     this.passX = ((this.playerPositionX + this.birdSize.width) > pipe.pipePositionX) && (this.playerPositionX < (pipe.pipePositionX + pipe.pipeSize.width));
     this.passY = ((this.playerPositionY + this.birdSize.height < pipe.pipeSize.height + pipe.gapPipe + pipe.pipePositionY) && (this.playerPositionY > pipe.pipeSize.height + pipe.pipePositionY))
     this.passPipes = this.passX && this.passY;
     this.collision = !this.passY && this.passX;
-    if (this.passPipes && !pipe.entrePipes) {
+   if (this.passPipes && !pipe.entrePipes) {
       this.sumPoints();
       pipe.entrePipes = true
       return false
@@ -77,5 +69,5 @@ class Player {
     this.puntos += 1;
   }
 
-
+ 
 }
