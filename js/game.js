@@ -33,7 +33,7 @@ class Game {
         this.minuteString = this.minute.toString();
         if (this.secondsString.length < 2) this.secondsString = "0" + this.secondsString;
         if (this.minuteString.length < 2) this.minuteString = "0" + this.minuteString;
-        return `${this.minuteString} : ${this.secondsString}`
+        return `${this.minuteString}:${this.secondsString}`
     }
 
     gameLoop() {
@@ -107,7 +107,7 @@ class Game {
     }
 
     checkAllCollisions() {
-        this.player.isInScreen();
+        
         this.pipes.forEach((pipe, index) => {
             if (this.player.checkCollisonPipes(pipe) || this.touchFloor() || this.touchCeil()) {
                 this.player.loseLive();

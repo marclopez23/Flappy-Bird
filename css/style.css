@@ -134,6 +134,11 @@ table {
   border-spacing: 0;
 }
 
+:focus,
+:focus-visible {
+  outline: none !important;
+}
+
 /*   FONT   */
 @font-face {
   font-family: "Flappy Bird";
@@ -148,8 +153,13 @@ body {
   font-family: "Flappy Bird", sans-serif;
 }
 
+body .selected {
+  box-shadow: 0px 12px 26px 2px #94949461;
+  transform: scale(1.1);
+}
+
 body main {
-  background-color: skyblue;
+  background-color: #38bdd1;
   color: #ffffff;
   padding: 2em;
   height: 100vh;
@@ -163,8 +173,16 @@ body main section.content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 1em;
+  justify-content: space-around;
+  padding: 3em;
+  width: 82%;
+  height: 500px;
+  background-color: #ded797;
+  border: 4px solid black;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 18px 3px #00000052;
+  max-width: 600px;
 }
 
 body main section.content .logo {
@@ -174,6 +192,7 @@ body main section.content .logo {
 
 body main section.content button {
   background-image: url(../assets/img/button.png);
+  background-position: center;
   color: #1aa64d;
   border: none;
   font-size: 16px;
@@ -184,14 +203,285 @@ body main section.content button {
   background-color: transparent;
   border-radius: 15px;
   transition: box-shadow 0.5s, transform 0.5s;
+  outline: none !important;
 }
 
-body main section.content button:active {
-  border: none;
-  outline: none;
+body main section.content button:active, body main section.content button:focus {
+  border: none !important;
+  outline: none !important;
+  outline-color: unset;
 }
 
 body main section.content button:hover {
   box-shadow: 0px 12px 26px 2px #94949461;
   transform: scale(1.1);
+}
+
+body main .start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 3em;
+  width: 82%;
+  height: 500px;
+  background-color: #ded797;
+  border: 4px solid black;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 18px 3px #00000052;
+  max-width: 600px;
+}
+
+body main .start-screen .birds img {
+  padding: 2.2em 2em;
+  border-radius: 10px;
+  margin: 0 0.5em;
+  transition: box-shadow 0.5s, transform 0.5s;
+  background-image: url("../assets/img/bird-btn.png");
+  background-position: center;
+  background-size: cover;
+  background-color: transparent;
+}
+
+body main .start-screen .birds img:hover {
+  box-shadow: 0px 12px 26px 2px #94949461;
+  transform: scale(1.1);
+}
+
+body main .start-screen button#dia,
+body main .start-screen button#noche {
+  background-image: url(../assets/img/button.png);
+  background-position: center;
+  color: #1aa64d;
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 1em;
+  height: 56px;
+  background-size: cover;
+  background-color: transparent;
+  border-radius: 9px;
+  transition: box-shadow 0.5s, transform 0.5s;
+  outline: none !important;
+  width: 100px;
+}
+
+body main .start-screen button#dia:active, body main .start-screen button#dia:focus,
+body main .start-screen button#noche:active,
+body main .start-screen button#noche:focus {
+  border: none !important;
+  outline: none !important;
+  outline-color: unset;
+}
+
+body main .start-screen button#dia:hover,
+body main .start-screen button#noche:hover {
+  box-shadow: 0px 12px 26px 2px #94949461;
+  transform: scale(1.05);
+}
+
+body main .start-screen button#start {
+  background-image: url(../assets/img/button.png);
+  background-position: center;
+  color: #1aa64d;
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 1em;
+  height: 79px;
+  background-size: cover;
+  background-color: transparent;
+  border-radius: 15px;
+  transition: box-shadow 0.5s, transform 0.5s;
+  outline: none !important;
+  width: 140px;
+}
+
+body main .start-screen button#start:active, body main .start-screen button#start:focus {
+  border: none !important;
+  outline: none !important;
+  outline-color: unset;
+}
+
+body main .start-screen button#start:hover {
+  box-shadow: 0px 12px 26px 2px #94949461;
+  transform: scale(1.1);
+}
+
+body main .start-screen .howTo p {
+  font-size: 30px;
+  -webkit-text-stroke: 1px #000000;
+  color: #ffffff;
+}
+
+body main #game-screen section {
+  margin-bottom: 1em;
+}
+
+body main #game-screen .info p {
+  font-size: 32px;
+  color: #000000;
+}
+
+body main #game-screen .info p span {
+  -webkit-text-stroke: 1px #000000;
+  color: #ffffff;
+}
+
+body main #game-screen canvas {
+  box-shadow: 0px 7px 6px #00000052;
+  border: 4px solid black;
+  border-radius: 20px;
+}
+
+body main #game-screen .hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 3em;
+  width: 82%;
+  height: 500px;
+  background-color: #ded797;
+  border: 4px solid black;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 18px 3px #00000052;
+  max-width: 600px;
+  height: unset;
+  padding: 1em;
+  visibility: hidden;
+}
+
+body main #game-screen .hint p {
+  font-size: 26px;
+  -webkit-text-stroke: 1px #000000;
+  color: #ffffff;
+}
+
+body main .gameOver-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 3em;
+  width: 82%;
+  height: 500px;
+  background-color: #ded797;
+  border: 4px solid black;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 18px 3px #00000052;
+  max-width: 600px;
+}
+
+body main .gameOver-screen button {
+  background-image: url(../assets/img/button.png);
+  background-position: center;
+  color: #1aa64d;
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 1em;
+  height: 79px;
+  background-size: cover;
+  background-color: transparent;
+  border-radius: 15px;
+  transition: box-shadow 0.5s, transform 0.5s;
+  outline: none !important;
+  width: 140px;
+}
+
+body main .gameOver-screen button:active, body main .gameOver-screen button:focus {
+  border: none !important;
+  outline: none !important;
+  outline-color: unset;
+}
+
+body main .gameOver-screen button:hover {
+  box-shadow: 0px 12px 26px 2px #94949461;
+  transform: scale(1.1);
+}
+
+body main .gameOver-screen section {
+  text-align: center;
+}
+
+body main .gameOver-screen section * {
+  margin: 1em 0;
+}
+
+body main .gameOver-screen section p {
+  margin: 0;
+  font-size: 30px;
+  -webkit-text-stroke: 1px #000000;
+  color: #ffffff;
+}
+
+body main .max-points {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 3em;
+  width: 82%;
+  height: 500px;
+  background-color: #ded797;
+  border: 4px solid black;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: 0px 8px 18px 3px #00000052;
+  max-width: 600px;
+  position: fixed;
+  display: none;
+}
+
+body main .max-points button {
+  background-image: url(../assets/img/button.png);
+  background-position: center;
+  color: #1aa64d;
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 1em;
+  height: 56px;
+  background-size: cover;
+  background-color: transparent;
+  border-radius: 9px;
+  transition: box-shadow 0.5s, transform 0.5s;
+  outline: none !important;
+  width: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+body main .max-points button:active, body main .max-points button:focus {
+  border: none !important;
+  outline: none !important;
+  outline-color: unset;
+}
+
+body main .max-points button:hover {
+  box-shadow: 0px 12px 26px 2px #94949461;
+  transform: scale(1.05);
+}
+
+body main .max-points img.close {
+  width: 20px;
+  float: right;
+}
+
+body main .max-points h2 {
+  font-size: 50px;
+  -webkit-text-stroke: 1px #000000;
+  color: #ffffff;
+  margin: -16px 0 20px 0;
+}
+
+body main .max-points li {
+  font-size: 26px;
+  -webkit-text-stroke: 1px #000000;
+  color: #ffffff;
+  margin-left: 10px;
 }
