@@ -131,12 +131,13 @@ function domChanges() {
         function playerUp(event) { //función que en función de la tecla que se pulse movemos o no el pájaro hacia arriba.
             let hint = document.querySelector('.hint')
             if (event.keyCode == 32) { // si hacemos clic en el espacio el pájaro subirá
-            const wingSound = new Audio("../assets/sounds/sfx_wing.mp3")
-            wingSound.play();
-            game.player.playerDirection(-1);
-            game.down = false
-            hint.style.visibility = "hidden"
-                wingSound.stop(); 
+                const wingSound = new Audio("../assets/sounds/sfx_wing.mp3")
+                wingSound.pause();
+                wingSound.currentTime = 0;
+                wingSound.play();
+                game.player.playerDirection(-1);
+                game.down = false
+                hint.style.visibility = "hidden"
             }
             else hint.style.visibility = "visible" // sí tocamos cualquier otra tecla mostramos el aviso que se debe jugar con el espacio.
             
