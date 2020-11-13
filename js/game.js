@@ -12,23 +12,23 @@ class Game {
         this.count = 0;
         this.seconds = 0;
         this.minute = 0;
-        this.increment = false;
+        this.increment = false; // esta variable se utiliza para que cuando se cumpla el rewuisito de tiempo para augmentar la velocidad, solo lo haga una vez dentro de ese segundo.
         this.time = 0;
         this.speed = 1.5;
-        this.down = true;
+        this.down = true; // siempre que sea true indicamos que el pájaro cae, si es false el pájaro va hacia arriba.
         this.color = color
-        this.backgroundImages = {
+        this.backgroundImages = { //assets background
             dia: "./assets/img/fondo/fondo.png",
             noche: "./assets/img/fondo/fondo-noche.png"
         }
-        this.sueloImages = {
+        this.sueloImages = { //assets suelo
             dia: "./assets/img/suelo/suelo.png",
             noche: "./assets/img/suelo/suelo-noche.png"
         }
         this.hora = hora
     }
 
-    timer() {
+    timer() { //Aquí generamos el tiempo a mostrar
         this.secondsString = this.seconds.toString();
         this.minuteString = this.minute.toString();
         if (this.secondsString.length < 2) this.secondsString = "0" + this.secondsString;
@@ -38,7 +38,7 @@ class Game {
 
     gameLoop() {
         this.player = new Player(this.canvas, 1, this.color)
-        this.time = setInterval(() => {
+        this.time = setInterval(() => { // con este setinerval controlamos el tiempo que pasa en el juego
             this.count++;
             this.seconds = this.count;
             if (this.count % 60 === 0) {
@@ -49,9 +49,9 @@ class Game {
         }, 1000);
         const loop = () => {
             
-            this.newPipe = this.pipes.length === 0 || this.pipes[(this.pipes.length - 1)].pipePositionX < this.canvas.width / 2; 
+            this.newPipe = this.pipes.length === 0 || this.pipes[(this.pipes.length - 1)].pipePositionX < this.canvas.width / 2; // Aquí comprobamos si existe alguna pipe o si la última pipe generada ha pasado la mitad de la pantalla. Si cumplimos alguna de estas condiciones se generara una neva pipe.
             if (this.newPipe) { 
-                const y = Math.floor((Math.random() * 242 + 10) - this.canvas.height / 2 );
+                const y = Math.floor((Math.random() * 242 + 10) - this.canvas.height / 2 ); // Aquí generamos una altura random para la pipe superior
                 this.pipes.push(new Pipes(this.canvas, y, this.seconds));
             }
             this.suelo = new Image();
@@ -74,10 +74,10 @@ class Game {
     updateCanvas() {
         this.player.move();
         this.pipes.forEach((pipe) => {
-            if (this.seconds % 5 === 0 && !this.increment) {
+            if (this.seconds % 5 === 0 && !this.increment) { // Con esto cada 5 segundos augmentamos la velocidad de las pipes, siempre y cuando la variable incremento sea falsa
                 this.increment = true;
-                this.speed = this.speed + 0.5
-            } else if(this.seconds % 5 != 0 && this.increment) {
+                this.speed = this.speed + 0.5;
+            } else if(this.seconds % 5 != 0 && this.increment) { //Cuando hemos salido de el segundo en el que se aumenta la velocidad volvemos a pasar la varible this.increment a true para preparar el código para el próximo incremento de velocidad
                 this.increment = false;
             }
             pipe.move(this.speed);
@@ -98,22 +98,21 @@ class Game {
         });
     }
 
-    touchFloor() {
+    touchFloor() { //función que detecta cuando el pájaro toca el suelo
         return (this.player.playerPositionY + this.player.birdSize.height >= this.canvas.height - this.suelo.height) ? true : false;
     }
 
-    touchCeil() {
+    touchCeil() { //función que detecta cuando el pájaro toca el techo
         return (this.player.playerPositionY <= 0) ? true : false;
     }
 
-    checkAllCollisions() {
-        
+    checkAllCollisions() { //funación que comprueba la colisión con las pipes
         this.pipes.forEach((pipe, index) => {
             if (this.player.checkCollisonPipes(pipe) || this.touchFloor() || this.touchCeil()) {
                 this.player.loseLive();
                 if (this.player.vidas === 0) {
                     this.isGameOver = true;
-                    this.onGameOver(this.player.puntos);
+                    this.onGameOver(this.player.puntos); //importante pasar los puntos para que despues salgan en la pantalla de gameover
                 }
             }
         });

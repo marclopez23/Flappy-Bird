@@ -22,10 +22,10 @@ function domChanges() {
     }
 
     function playerSelectorScreen() {
-        let color;
-        let hora;
-        let colorOk = false;
-        let hourOk = false;
+        let color; // aquí guardaremos el color del pájaro
+        let hora; // aquí guardaremos la hora del día
+        let colorOk = false; // se utilzará para ver que hemos seleccionado un color de pájaro.
+        let hourOk = false; // se utilizará para comprobar que hemos seleccionado una hora.
     
         buildDom(`
         <article class="start-screen">
@@ -45,25 +45,27 @@ function domChanges() {
         </article>
         `);
 
+    
+        // detectamos los distintos elementos interactivos del DOM
         const yellow = document.querySelector("#yellow");
         const red = document.querySelector("#red");
         const blue = document.querySelector("#blue");
         const day = document.querySelector('#dia');
         const night = document.querySelector('#noche')
         const startButton = document.querySelector("#start")
-        const allImgBtn = document.querySelectorAll(".birds img")
-        const allHourBtn = document.querySelectorAll(".hours button")
+        const allImgBtn = document.querySelectorAll(".birds img") //juntamos en una variable todas las imágenes de pájaros para poder iterar luego con ellas.
+        const allHourBtn = document.querySelectorAll(".hours button")//juntamos en una variable todos los botones para poder iterar luego con ellos.
         
-        const quitClass = (element) => element.forEach( tag => {
+        const quitClass = (element) => element.forEach( tag => { //función que se utilizará para quitar las clases a los elementos que deben de dejar de ser seleccionados
             tag.classList.remove('selected')
         });
 
         yellow.addEventListener('click', function () {
-            quitClass(allImgBtn);
-            this.classList.add("selected")
-            color = "yellow"
-            colorOk = true
-            start();
+            quitClass(allImgBtn); //quitamos todas las clases selected
+            this.classList.add("selected") // añadismos la clase del estado seleccioando
+            color = "yellow" //asignamos el color del pájaro
+            colorOk = true // le decimos al código que hemos seleccionado el color
+            start(); //ejecutamos la función que puede añadir un event listener para empezar el juego
         });
         red.addEventListener('click', function () {
             quitClass(allImgBtn);
@@ -95,7 +97,7 @@ function domChanges() {
         });
         
         const start = () => {
-            let allSelected = colorOk && hourOk;
+            let allSelected = colorOk && hourOk; // si tenemos todo seleccionado podremos añadir el eventlistener para empezar el juego.
             if (allSelected) startButton.addEventListener('click', () => buildGameScreen(color, hora))
         }
 
@@ -126,14 +128,17 @@ function domChanges() {
         game.gameOverCallback(buildGameOverScreen);
         game.gameLoop();
         
-        function playerUp(event) {
+        function playerUp(event) { //función que en función de la tecla que se pulse movemos o no el pájaro hacia arriba.
             let hint = document.querySelector('.hint')
-            if(event.keyCode == 32){
+            if (event.keyCode == 32) { // si hacemos clic en el espacio el pájaro subirá
+            const wingSound = new Audio("../assets/sounds/sfx_wing.mp3")
+            wingSound.play();
             game.player.playerDirection(-1);
-                game.down = false
-                hint.style.visibility = "hidden"
+            game.down = false
+            hint.style.visibility = "hidden"
+                wingSound.stop(); 
             }
-            else hint.style.visibility = "visible"
+            else hint.style.visibility = "visible" // sí tocamos cualquier otra tecla mostramos el aviso que se debe jugar con el espacio.
             
         }
         function playerDown() {
@@ -146,7 +151,7 @@ function domChanges() {
 
     }
 
-    const setScore = (newScore) => {
+    const setScore = (newScore) => { //función para almacenar todas las puntuaciones de forma local
     const topScoresStr = localStorage.getItem('topScores');
     let topScoresArr = [];
     if(topScoresStr) topScoresArr = JSON.parse(topScoresStr);
@@ -165,7 +170,7 @@ function domChanges() {
         })
         const bestTen = () => {
             let bestScores = [];
-            for (let i = 0; i < 10; i++){
+            for (let i = 0; i < 10; i++){ // con este for solo mostramos las 10 mejores punuaciones ordenadas de mejor a peor
                 if(orderedScores[i] != undefined)
                 bestScores.push(orderedScores[i])
             }
