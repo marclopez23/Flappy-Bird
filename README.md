@@ -1,6 +1,6 @@
 # Flappy-Bird
 
-###[Enlace al juego](https://marclopez23.github.io/Flappy-Bird/)
+[Enlace al juego](https://marclopez23.github.io/Flappy-Bird/)
 
 ## Descripción
 
